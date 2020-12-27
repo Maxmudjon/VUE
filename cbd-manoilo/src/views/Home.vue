@@ -1,5 +1,6 @@
 <template>
-  <div class="home">
+<section>
+  <section class="home">
       <div class="home__top-panel">
         <nav class="home__nav">
           <a href="#" class="home__nav-links">HOME</a>
@@ -12,17 +13,48 @@
         </div>
         <div class="home__user-buttons">
           <div class="home__link-wrapper"><a href="#" class="home__btn-links">LOGIN</a></div>
-          <div class="home__link-wrapper"><a href="#" class="home__btn-links">SEARCH</a></div>
+          <div class="home__link-wrapper"><i class="fas fa-search"></i><a href="#" class="home__btn-links--search">SEARCH </a></div>
          <div class="home__link-wrapper"> <a href="#" class="home__btn-links">CART (0)</a></div>
         </div>
       </div>
       <div class="home__content">
         <h1 class="home__title">Enhancing Life  Excelling in Care</h1>
-        <h2 class="home__subtitile"> Choose Wisely. Choose CBD.</h2>
-        <div class="home__btn"></div>
+        <h2 class="home__subtitle"> Choose Wisely. Choose CBD.</h2>
+        <div class="home__btn"><a href="#" class="home__shop-link">START SHOPPING</a></div>
+        <a href="#" class="home__prod-link">See all products <i class="fas fa-long-arrow-alt-right"></i></a>
 
       </div>
-  </div>
+      <h3 class="home__vertical-text"> CBD POTION HEALTH</h3>
+  </section>
+  <section class="about">
+    <div class="about__what-we-are">
+<img class="about__border" src="../assets/about-border.png" alt="border">
+<h3 class="about__title">WE ARE WHAT WE ARE</h3>
+<img class="about__logos" src="../assets/Logos.png" alt="Logos">
+    </div>
+   <div id="tabs" class="container">
+  
+    <div class="tabs">
+        <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Tab 1</a>
+        <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">Tab 2</a>
+        <a v-on:click="activetab=3" v-bind:class="[ activetab === 3 ? 'active' : '' ]">Tab 3</a>
+    </div>
+
+    <div class="content">
+        <div v-if="activetab === 1" class="tabcontent">
+            Is this the real life? Is this just fantasy?
+        </div>
+        <div v-if="activetab === 2" class="tabcontent">
+            Caught in a landslide, no escape from reality
+        </div>
+        <div v-if="activetab === 3" class="tabcontent">
+            Open your eyes, look up to the skies and see
+        </div>
+    </div>
+  
+</div>
+  </section>
+</section>
 </template>
 
 <script>
@@ -32,15 +64,26 @@ export default {
   name: 'Home',
   components: {
     
-  }
-}
+  },
+name: 'Tabs',
+  data() {
+     return {
+        activeTab: 1
+     }
+
+  
+}}
 </script>
+
+
+     
+    
 <style lang="scss">
 @import '../styles/core/vars.scss';
 .home {
   min-height: 100vh;
-  background-color: yellow;
-  background-image: url('../assets/bg-header.png');
+  
+  background-image: linear-gradient( rgba(0, 0, 0, 0.5) ,rgba(255, 255, 255, 0.1)), url('../assets/bg-header.png');
   color: white; 
   position: relative;
   font-weight: 400;
@@ -56,7 +99,7 @@ export default {
     border-bottom: 1px solid $white;
   }
   &__nav {
-    width: 25%;
+    min-width: 25%;
     display: flex;
     justify-content: space-around;
     font-size: $nav-size;
@@ -80,29 +123,136 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    
     
   }
   &__btn-links {
     width: 100%;
+    &--search {
+      width: 50%;
+    }
     
   }
   &__content {
     display: flex;
     margin: auto;
     flex-direction: column;
-    height: 100vh;
+    height: 90vh;
     width: 60%;
     justify-content: center;
     align-items: flex-end;
+    padding-top: 100px;
   }
   &__title {
     font-size: $title-size;
     line-height: 75px;
-    letter-spacing: 11px;
+    letter-spacing: 13px;
     text-transform: uppercase;
     text-align: right;
     width: 70%;
     margin-bottom: 15px;
+    font-weight: 400;
+  }&__subtitle {
+    font-size: $sub-title-size;
+    line-height: 75px;
+    font-weight: 300;
+    letter-spacing: 7px;
+    margin-bottom: 50px;
+  }
+  &__btn {
+    min-width: 280px;
+    min-height: 70px;
+    border: 1px solid $white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    font-size: $btn-size;
+    margin-bottom: 30px;
+    &:after {
+      position: absolute;
+      content: "";
+      border-top: 2px solid $white;
+      width: 45px;
+      right: 40px;
+    }
+  }
+  &__shop-link {
+    width: 200px;
+  }
+  &__prod-link {
+    font-weight: 300px;
+    font-size: $link-size;
+  line-height: 75px;
+  letter-spacing: 5px;
+  }
+  &__vertical-text {
+    transform: rotate(270deg);
+    position: absolute;
+    left: 30px;
+    font-size: $middle-size;
+    bottom: 170px;
+    display: block;
+    &:before {
+      content: "";
+      border-bottom: 2px solid $white;
+      width: 70px;
+      height: 2px;
+      position: absolute;
+      bottom:18px;
+      left: -90px;
+    }
+  }
+.fa-long-arrow-alt-right {
+  padding-left: 15px;
+}
+
+
+}
+.about {
+  background-color: $bgc-color;
+  min-height: 100vh;
+  text-align: center;
+  padding-top: 2%;
+  
+  
+  &__border {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+	-webkit-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+        transform: translate(-50%);
+        margin-bottom: 80px;
+  }
+  &__title {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    z-index: 100;
+    font-size: $sub-title-size;
+    line-height: 75px;
+    letter-spacing: 6px;
+    -webkit-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+        transform: translate(-50%);
+  }
+  
+  &__logos {
+position: absolute;
+top: 70%;
+left: 50%;
+-webkit-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+        transform: translate(-50%);
+  }
+  &__what-we-are {
+    width: 100%;
+    height: 300px;
+    position: relative;
   }
 }
+
+
 </style>
