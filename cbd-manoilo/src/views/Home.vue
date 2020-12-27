@@ -1,6 +1,6 @@
 <template>
-<section>
-  <section class="home">
+  <section>
+    <section class="home">
       <div class="home__top-panel">
         <nav class="home__nav">
           <a href="#" class="home__nav-links">HOME</a>
@@ -14,77 +14,50 @@
         <div class="home__user-buttons">
           <div class="home__link-wrapper"><a href="#" class="home__btn-links">LOGIN</a></div>
           <div class="home__link-wrapper"><i class="fas fa-search"></i><a href="#" class="home__btn-links--search">SEARCH </a></div>
-         <div class="home__link-wrapper"> <a href="#" class="home__btn-links">CART (0)</a></div>
+          <div class="home__link-wrapper"><a href="#" class="home__btn-links">CART (0)</a></div>
         </div>
       </div>
       <div class="home__content">
-        <h1 class="home__title">Enhancing Life  Excelling in Care</h1>
-        <h2 class="home__subtitle"> Choose Wisely. Choose CBD.</h2>
+        <h1 class="home__title">Enhancing Life Excelling in Care</h1>
+        <h2 class="home__subtitle">Choose Wisely. Choose CBD.</h2>
         <div class="home__btn"><a href="#" class="home__shop-link">START SHOPPING</a></div>
         <a href="#" class="home__prod-link">See all products <i class="fas fa-long-arrow-alt-right"></i></a>
-
       </div>
-      <h3 class="home__vertical-text"> CBD POTION HEALTH</h3>
+      <h3 class="home__vertical-text">CBD POTION HEALTH</h3>
+    </section>
+    <section class="about">
+      <div class="about__what-we-are">
+        <img class="about__border" src="../assets/about-border.png" alt="border" />
+        <h3 class="about__title">WE ARE WHAT WE ARE</h3>
+        <img class="about__logos" src="../assets/Logos.png" alt="Logos" />
+      </div>
+    </section>
+    <section class="tabs">
+      <tabs />
+    </section>
   </section>
-  <section class="about">
-    <div class="about__what-we-are">
-<img class="about__border" src="../assets/about-border.png" alt="border">
-<h3 class="about__title">WE ARE WHAT WE ARE</h3>
-<img class="about__logos" src="../assets/Logos.png" alt="Logos">
-    </div>
-   <div id="tabs" class="container">
-  
-    <div class="tabs">
-        <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Tab 1</a>
-        <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">Tab 2</a>
-        <a v-on:click="activetab=3" v-bind:class="[ activetab === 3 ? 'active' : '' ]">Tab 3</a>
-    </div>
-
-    <div class="content">
-        <div v-if="activetab === 1" class="tabcontent">
-            Is this the real life? Is this just fantasy?
-        </div>
-        <div v-if="activetab === 2" class="tabcontent">
-            Caught in a landslide, no escape from reality
-        </div>
-        <div v-if="activetab === 3" class="tabcontent">
-            Open your eyes, look up to the skies and see
-        </div>
-    </div>
-  
-</div>
-  </section>
-</section>
 </template>
 
 <script>
-
-
+import Tabs from "../components/tabs";
 export default {
-  name: 'Home',
-  components: {
-    
-  },
-name: 'Tabs',
+  name: "Home",
+  components: { Tabs },
   data() {
-     return {
-        activeTab: 1
-     }
-
-  
-}}
+    return {
+      activeTab: 1
+    };
+  }
+};
 </script>
 
-
-     
-    
 <style lang="scss">
-@import '../styles/core/vars.scss';
+@import "../styles/core/vars.scss";
 .home {
   min-height: 100vh;
-  
-  background-image: linear-gradient( rgba(0, 0, 0, 0.5) ,rgba(255, 255, 255, 0.1)), url('../assets/bg-header.png');
-  color: white; 
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.1)), url("../assets/bg-header.png");
+  color: white;
   position: relative;
   font-weight: 400;
   font-family: $main-font;
@@ -115,7 +88,7 @@ name: 'Tabs',
     height: 100%;
     align-items: center;
   }
- 
+
   &__link-wrapper {
     height: 100%;
     width: 100%;
@@ -124,15 +97,12 @@ name: 'Tabs',
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    
-    
   }
   &__btn-links {
     width: 100%;
     &--search {
       width: 50%;
     }
-    
   }
   &__content {
     display: flex;
@@ -153,7 +123,8 @@ name: 'Tabs',
     width: 70%;
     margin-bottom: 15px;
     font-weight: 400;
-  }&__subtitle {
+  }
+  &__subtitle {
     font-size: $sub-title-size;
     line-height: 75px;
     font-weight: 300;
@@ -184,8 +155,8 @@ name: 'Tabs',
   &__prod-link {
     font-weight: 300px;
     font-size: $link-size;
-  line-height: 75px;
-  letter-spacing: 5px;
+    line-height: 75px;
+    letter-spacing: 5px;
   }
   &__vertical-text {
     transform: rotate(270deg);
@@ -200,31 +171,28 @@ name: 'Tabs',
       width: 70px;
       height: 2px;
       position: absolute;
-      bottom:18px;
+      bottom: 18px;
       left: -90px;
     }
   }
-.fa-long-arrow-alt-right {
-  padding-left: 15px;
-}
-
-
+  .fa-long-arrow-alt-right {
+    padding-left: 15px;
+  }
 }
 .about {
   background-color: $bgc-color;
   min-height: 100vh;
   text-align: center;
   padding-top: 2%;
-  
-  
+
   &__border {
     position: absolute;
     left: 50%;
     top: 5%;
-	-webkit-transform: translate(-50%);
+    -webkit-transform: translate(-50%);
     -ms-transform: translate(-50%);
-        transform: translate(-50%);
-        margin-bottom: 80px;
+    transform: translate(-50%);
+    margin-bottom: 80px;
   }
   &__title {
     position: absolute;
@@ -236,16 +204,16 @@ name: 'Tabs',
     letter-spacing: 6px;
     -webkit-transform: translate(-50%);
     -ms-transform: translate(-50%);
-        transform: translate(-50%);
+    transform: translate(-50%);
   }
-  
+
   &__logos {
-position: absolute;
-top: 70%;
-left: 50%;
--webkit-transform: translate(-50%);
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    -webkit-transform: translate(-50%);
     -ms-transform: translate(-50%);
-        transform: translate(-50%);
+    transform: translate(-50%);
   }
   &__what-we-are {
     width: 100%;
@@ -253,6 +221,4 @@ left: 50%;
     position: relative;
   }
 }
-
-
 </style>
